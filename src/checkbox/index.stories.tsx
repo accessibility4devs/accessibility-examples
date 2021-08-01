@@ -12,8 +12,8 @@ export default {
 
 const Template: ComponentStory<typeof Checkbox> = (args) => <div lang="pt-BR"><Checkbox {...args} /></div>;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Basic = Template.bind({});
+Basic.args = {
   label: 'Isso é um checkbox',
 };
 
