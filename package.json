@@ -1,7 +1,12 @@
 {
-  "name": "accessibility-example",
+  "name": "accessibility-examples",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "description": "Examples of accessible Design System components.",
+  "homepage": "https://accessibility4devs.com/",
+  "author": "Accessibility 4DEVS",
+  "email": "marilia@accessibility4devs.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
