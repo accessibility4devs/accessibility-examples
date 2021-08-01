@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -16,9 +15,9 @@ interface Props {
   */
   checked: boolean;
   /**
-   * Required click handler
+   *  onChange handler
    */
-  onClick?: () => void;
+  onChange?: () => void;
 }
 
 const Component = styled.label`
@@ -33,12 +32,10 @@ const Component = styled.label`
 export const CheckboxInput = ({
   id,
   label,
-  onClick,
+  onChange,
   checked,
   ...props
 }: Props) => {
-  const [isChecked, setIsChecked] = useState(checked);
-
   const InputContainer = styled.div`
     position: relative;
     display: flex;
@@ -61,7 +58,10 @@ export const CheckboxInput = ({
     height: 1.2rem;
     margin: 0;
     border-radius: 4px;
-    background-color: ${isChecked ? 'blue' : 'transparent'};
+    background-color: transparent;
+    &:checked {
+      background-color: blue;
+    }
   `
 
   return (
@@ -70,12 +70,9 @@ export const CheckboxInput = ({
         <Box
           {...props}
           id={id}
+          name={id}
           type="checkbox"
-          aria-checked={isChecked}
-          onClick={() => {
-            setIsChecked(!isChecked);
-            onClick && onClick();
-          }}
+          onChange={onChange}
         />
       <FaCheck color="white" />
       </InputContainer>

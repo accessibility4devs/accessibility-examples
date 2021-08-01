@@ -16,5 +16,6 @@ export const Basic = Template.bind({});
 Basic.args = {
   id: 'checkbox-input-example',
   label: 'Isso é um checkbox',
+  onChange: () => console.log('onChange called'),
 };
 
