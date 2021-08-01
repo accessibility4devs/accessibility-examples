@@ -20,13 +20,16 @@ interface Props {
   onChange?: () => void;
 }
 
-const Component = styled.label`
-  display: flex;
+const Label = styled.label`
+  display: inline-flex;
   align-items: center;
   height: 3rem;
+  width: inherit;
   background-color: transparent;
   border: 0;
   cursor: pointer;
+  padding-left: 4px;
+  padding-right: 4px;
 `
 
 export const CheckboxInput = ({
@@ -48,7 +51,7 @@ export const CheckboxInput = ({
     }
   `
 
-  const Box = styled.input`
+  const Input = styled.input`
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -59,24 +62,36 @@ export const CheckboxInput = ({
     margin: 0;
     border-radius: 4px;
     background-color: transparent;
+    outline: 0;
+
     &:checked {
       background-color: blue;
     }
   `
 
+  const Wrapper = styled.div`
+    &:focus-within {
+      label {
+        outline: -webkit-focus-ring-color auto 1px;
+      }
+    }
+  `
+
   return (
-    <Component htmlFor={id}>
-      <InputContainer>
-        <Box
-          {...props}
-          id={id}
-          name={id}
-          type="checkbox"
-          onChange={onChange}
-        />
-      <FaCheck color="white" />
-      </InputContainer>
-      {label}
-    </Component>
+    <Wrapper>
+      <Label htmlFor={id} className="label">
+        <InputContainer>
+          <Input
+            {...props}
+            id={id}
+            name={id}
+            type="checkbox"
+            onChange={onChange}
+          />
+        <FaCheck color="white" />
+        </InputContainer>
+        {label}
+      </Label>
+    </Wrapper>
   );
 };
